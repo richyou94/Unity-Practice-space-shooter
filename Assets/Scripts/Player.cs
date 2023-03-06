@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //public or private reference
-    //data type(int, float, bool, string)
-    // every variable has a name
-    //optional value assigned
+    
     [SerializeField]
-    private float speed = 3.5f;
+    private float _speed = 3.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +21,10 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
         // new Vector3(1, 0, 0);
-        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
-        transform.Translate(Vector3.up * verticalInput * speed * Time.deltaTime);
+        transform.Translate(direction * _speed * Time.deltaTime);
+        
     }
 }
